@@ -103,3 +103,51 @@ const slidePrev = function () {
 };
 
 heroSliderPrevBtn.addEventListener("click", slidePrev);
+document.addEventListener("DOMContentLoaded", function() {
+  const menuFilters = document.querySelectorAll("#menu-flters li");
+  const menuItems = document.querySelectorAll(".menu-item");
+
+  menuFilters.forEach(filter => {
+    filter.addEventListener("click", function() {
+      const filterValue = this.getAttribute("data-filter");
+      console.log(filterValue, menuItems);
+      menuFilters.forEach(f => f.classList.remove("filter-active"));
+      this.classList.add("filter-active");
+      menuItems.forEach(item => {
+        if (filterValue === "*") {
+          item.classList.remove("hidden");
+        } else {
+          if (item.classList.contains(filterValue.slice(1))) {
+            item.classList.remove("hidden");
+          } else {
+            item.classList.add("hidden");
+          }
+        }
+      });
+    });
+  });
+});
+document.getElementById("submitbtn").addEventListener("click", function() {
+  const formData = new FormData(document.getElementById("reservationForm"));
+
+  fetch("https://formspree.io/f/mayrarzp", {
+    method: "POST",
+    body: formData,
+    headers: {
+      "Accept": "application/json"
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("Reservation sent successfully!");
+      document.getElementById("reservationForm").reset(); // Reset form fields
+    } else {
+      alert("Error submitting form. Please try again later.");
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    alert("Error submitting form. Please try again later.");
+  });
+});
+
