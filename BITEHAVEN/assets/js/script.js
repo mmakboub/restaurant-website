@@ -127,7 +127,51 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
-document.getElementById("submitbtn").addEventListener("click", function() {
+
+document.getElementById('reservationForm').addEventListener('submit', function(event) {
+  // Get form elements
+  var name = document.getElementById('name').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var message = document.getElementById('message').value.trim();
+
+  // Regular expression for phone validation
+  var phonePattern = /^\+?[0-9]{10,15}$/;
+
+  // Clear previous error messages
+  document.querySelectorAll('.error-message').forEach(function(errorMsg) {
+    errorMsg.remove();
+  });
+
+  // Initialize error flag
+  var hasError = false;
+
+  // Validate name
+  if (name === '') {
+    displayError('name', 'Name is required.');
+    hasError = true;
+  }
+
+  // Validate phone
+  if (phone === '') {
+    displayError('phone', 'Phone number is required.');
+    hasError = true;
+  } else if (!phonePattern.test(phone)) {
+    displayError('phone', 'Please enter a valid phone number.');
+    hasError = true;
+  }
+
+  // Validate message
+  if (message === '') {
+    displayError('message', 'Message is required.');
+    hasError = true;
+  }
+
+  // If there's any error, prevent form submission
+  if (hasError) {
+    event.preventDefault();
+    return; // Exit the function if there's an error
+  }
+
   const formData = new FormData(document.getElementById("reservationForm"));
 
   fetch("https://formspree.io/f/mayrarzp", {
@@ -151,3 +195,10 @@ document.getElementById("submitbtn").addEventListener("click", function() {
   });
 });
 
+function displayError(inputId, message) {
+  var inputElement = document.getElementById(inputId);
+  var errorElement = document.createElement('div');
+  errorElement.className = 'error-message';
+  errorElement.textContent = message;
+  inputElement.parentElement.appendChild(errorElement);
+}

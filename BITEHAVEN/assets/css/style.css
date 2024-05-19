@@ -2212,3 +2212,9 @@ textarea.input-field {
 
     
 }
+.error-message {
+  color: var(--gold-crayola); /* Change this to the desired color */
+  font-size: 0.875em;
+  padding-bottom: 20px;
+  margin-top: 0.25em;
+}

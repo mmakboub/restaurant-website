@@ -41,7 +41,7 @@
           <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
         </div>
 
-        <span class="span">Daily : 8.00 am to 10.00 pm</span>
+        <span class="span">Daily : 8.00 am to 11.00 pm</span>
       </div>
 
       <a href="tel:+11234567890" class="topbar-item link">
@@ -49,7 +49,7 @@
           <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
         </div>
 
-        <span class="span">+212 666666666</span>
+        <span class="span">+212-666666666</span>
       </a>
 
       <div class="separator"></div>
@@ -59,7 +59,7 @@
           <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
         </div>
 
-        <span class="span">booking@restaurant.com</span>
+        <span class="span">booking@BITEHAVEN.com</span>
       </a>
 
     </div>
@@ -596,9 +596,8 @@
             </p>
 
             <div class="input-wrapper">
-              <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field">
-
-              <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
+              <input type="text" name="name" id="name" placeholder="Your Name" autocomplete="off" class="input-field">
+              <input type="tel" name="phone" id="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
             </div>
 
             <div class="input-wrapper">
@@ -656,7 +655,7 @@
 
             </div>
 
-            <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
+            <textarea name="message" id="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
 
             <button type="submit" class="btn btn-secondary" id="submitbtn">
               <span class="text text-1">Book A Table</span>
@@ -741,16 +740,13 @@
           Subscribe us & Get <span class="span">25% Off.</span>
         </p>
 
-        <form action="" class="input-wrapper">
+        <form id="subscription-form" class="input-wrapper">
           <div class="icon-wrapper">
             <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-
-            <input type="email" name="email_address" placeholder="Your email" autocomplete="off" class="input-field">
+            <input type="email" id="email" name="email_address" placeholder="Your email" autocomplete="off" class="input-field">
           </div>
-
           <button type="submit" class="btn btn-secondary">
             <span class="text text-1">Subscribe</span>
-
             <span class="text text-2" aria-hidden="true">Subscribe</span>
           </button>
         </form>
